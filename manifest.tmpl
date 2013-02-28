@@ -1,0 +1,70 @@
+{header}
+	<title>{repo|escape}: {node|short} {path|escape}</title>
+</head>
+<body>
+	
+	<div class="navbar">	
+		<div class="container">
+			<a class="brand" href="{logourl}">&nbsp;</a>
+			<ul class="nav">
+				<li class="active">
+					<a href="/">Repositories</a>
+				</li>
+			</ul>
+			<ul class="nav pull-right">
+				<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="content" class="container">
+
+		<h1>{repo|escape}</h1>
+
+		<form id="search" class="form-search" action="{url}log">
+			{sessionvars%hiddenformentry}
+			<div class="input-append">
+				<input name="rev" id="search1" type="text" placeholder="Author, revision, filename, or commit" /><a class="btn" onclick="document.getElementById('search').submit()"><i class="icon-search"></i></a>
+			</div>			
+		</form>
+		
+		<ul class="nav nav-tabs">
+			<li><a href="{url}shortlog">Commits</a></li>
+			<li class="active"><a href="{url}file">Files</a></li>
+		</ul>
+
+		<div class="revision-details">
+			<span class="date">{date|shortdate}</span> 
+		</div>
+		
+		<p>
+			<a  href="{url}rev/{node|short}{sessionvars%urlparameter}" class="revision">{rev}:{node|short}</a> 
+			{tags%changelogtag}
+			<span class="downloads">
+				{archives%archiveentry}
+			</span>	
+		</p>
+		
+		<h3>{repo|escape}{path|escape}</h3>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="filename">Name</th>
+					<th class="size">Size</th>
+					<th class="permissions">Permissions</th>
+				</tr>
+				<tr class="fileline parity{upparity}">
+					<td class="filename"><a href="{url}file/{node|short}{up|urlescape}{sessionvars%urlparameter}">[up]</a></td>
+					<td class="size"></td>
+					<td class="permissions"><tt>drwxr-xr-x</tt></td>
+				</tr>
+			</thead>
+			<tbody>
+				{dentries%direntry}
+				{fentries%fileentry}
+			</tbody>
+		</table>
+	</div>
+	
+{footer}

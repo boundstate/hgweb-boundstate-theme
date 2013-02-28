@@ -1,0 +1,101 @@
+
+
+
+// Grays
+// -------------------------
+@black: #000;
+@grayDarker: #222;
+@grayDark: #333;
+@gray: #555;
+@grayLight: #999;
+@grayLighter: #eee;
+@white: #fff;
+
+// Accent colors
+// -------------------------
+@blue: #00B5F1; 
+
+// Scaffolding
+// -------------------------
+@bodyBackground: #f0eef1;
+@textColor: @grayDark;
+
+
+// Links
+// -------------------------
+@linkColor: darken(@blue, 10%);
+@linkColorHover: darken(@linkColor, 15%);
+
+// Typography
+// -------------------------
+@sansFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily: Georgia, "Times New Roman", Times, serif;
+@monoFontFamily: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize: 13px;
+@baseFontFamily: @sansFontFamily;
+@baseLineHeight: 18px;
+@altFontFamily: @serifFontFamily;
+
+@headingsFontFamily: inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight: bold; // instead of browser default, bold
+@headingsColor: inherit; // empty to use BS default, @textColor
+
+// Icons
+// -------------------------
+@iconSpritePath: '../images/glyphicons-halflings.png';
+
+// Buttons
+// -------------------------
+@btnBackground: @white;
+@btnBackgroundHighlight: darken(@white, 10%);
+@btnBorder: #ccc;
+
+@btnPrimaryBackground: @linkColor;
+@btnPrimaryBackgroundHighlight: spin(@btnPrimaryBackground, 15%);
+
+// Forms
+// -------------------------
+@inputBackground: @white;
+@inputBorder: #ccc;
+@inputBorderRadius: 3px;
+
+// Input placeholder text color
+// -------------------------
+@placeholderText: @grayLight;
+
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown: 1000;
+
+// Dropdowns
+// -------------------------
+@dropdownBackground: @white;
+@dropdownBorder: rgba(0,0,0,.2);
+@dropdownLinkColor: @grayDark;
+@dropdownLinkColorHover: @white;
+@dropdownLinkBackgroundHover: @linkColor;
+@dropdownDividerTop: #e5e5e5;
+@dropdownDividerBottom: @white;
+
+// Hr border color
+// -------------------------
+@hrBorder: #ddd;
+
+// Navbar
+// -------------------------
+@navbarHeight: 40px;
+@navbarBackground: darken(@blue, 5%);
+@navbarBackgroundHighlight: @blue;
+@navbarLinkColor: @white;
+@navbarLinkBackgroundHover: fadeout(darken(@blue, 10%), 20%);
+@navbarLinkColorHover: @white;
+@navbarLinkColorActive: @white;
+@navbarLinkBackgroundActive: darken(@blue, 10%);
+
+// Tables
+// --------------------------
+@tableBorder: #ddd;

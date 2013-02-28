@@ -1,0 +1,14 @@
+<li>
+	<a href="{url}rev/{node|short}{sessionvars%urlparameter}">
+		<span class="revision-details">		
+			<span class="revision">{node|short}</span> 
+			{inbranch%'<span class="tag branchname">{name|escape}</span> '}
+			{branches%'<span class="tag branchhead">{name|escape}</span> '}
+			{tags%changelogtag}
+			<span class="date">{date|shortdate}</span>
+		</span>
+
+		<span class="author">{author|person}</span>
+		<span class="description">{desc|strip|firstline|escape|nonempty}</span>		
+	</a>
+</li>

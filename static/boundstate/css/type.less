@@ -1,0 +1,112 @@
+// Typography.less
+// Headings, body text, lists, code, and more for a versatile and durable typography system
+// ----------------------------------------------------------------------------------------
+
+
+// BODY TEXT
+// ---------
+
+p {
+  margin: 0 0 @baseLineHeight / 2;
+  small {
+    font-size: @baseFontSize - 2;
+    color: @grayLight;
+  }
+}
+
+// HEADINGS
+// --------
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: @headingsFontFamily;
+  font-weight: @headingsFontWeight;
+  color: @headingsColor;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
+}
+h1 {
+  font-size: 30px;
+  line-height: @baseLineHeight * 2;
+}
+h2 {
+  font-size: 24px;
+  line-height: @baseLineHeight * 2;
+}
+h3 {
+  font-size: 18px;
+  line-height: @baseLineHeight * 1.5;
+}
+h4, h5, h6 {
+  line-height: @baseLineHeight;
+}
+h4 {
+  font-size: 14px;
+}
+h5 {
+  font-size: 12px;
+}
+h6 {
+  font-size: 11px;
+  color: @grayLight;
+  text-transform: uppercase;
+}
+
+// Page header
+.page-header {
+  padding-bottom: @baseLineHeight - 1;
+  margin: 0 0 @baseLineHeight;
+  border-bottom: 1px solid @hrBorder;
+}
+.page-header h1 {
+  line-height: 1;
+}
+
+
+
+// LISTS
+// -----
+
+// Unordered and Ordered lists
+ul, ol {
+  padding: 0;
+  margin: 0 0 @baseLineHeight / 2 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  line-height: @baseLineHeight;
+}
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
+// MISC
+// ----
+
+// Horizontal rules
+hr {
+  margin: @baseLineHeight 0;
+  border: 0;
+  border-top: 1px solid @hrBorder;
+  border-bottom: 1px solid @white;
+}
+
+// Emphasis
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}

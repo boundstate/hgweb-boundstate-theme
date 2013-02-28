@@ -1,0 +1,37 @@
+{header}
+	<title>Repositories - Mercurial</title>
+</head>
+<body>
+
+	<div class="navbar">	
+		<div class="container">
+			<a class="brand" href="{logourl}">&nbsp;</a>
+			<ul class="nav">
+				<li class="active">
+					<a href="{url}">Repositories</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="content" class="container">
+		<div class="page-header">
+			<h1>Repositories</h1>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th><a href="?sort={sort_name}">Name</a></th>
+					<th><a href="?sort={sort_description}">Description</a></th>
+					<th><a href="?sort={sort_contact}">Contact</a></th>
+					<th><a href="?sort={sort_lastchange}">Last Modified</a></th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				{entries%indexentry}
+			</tbody>
+		</table>
+	</div>
+	{footer}

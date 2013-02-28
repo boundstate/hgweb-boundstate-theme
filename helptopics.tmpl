@@ -1,0 +1,63 @@
+{header}
+<title>Help: {title}</title>
+</head>
+<body>
+
+	<div class="navbar">	
+		<div class="container">
+			<a class="brand" href="{logourl}">&nbsp;</a>
+			<ul class="nav">
+				<li class="active">
+					<a href="/">Repositories</a>
+				</li>
+			</ul>
+			<ul class="nav pull-right">
+				<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="content" class="container">
+
+		
+		<div class="page-header">
+			<h1>Help</h1>
+		</div>
+
+		
+		<div class="row">
+			
+			<table class="table table-help">
+				<thead>
+					<tr><td colspan="2"><h3><a name="main" href="#topics">Topics</a></h3></td></tr>
+				</thead>
+				<tbody>
+					{topics % helpentry}
+				</tbody>
+			</table>
+
+			<table class="table table-help">
+				<thead>
+					<tr><td colspan="2"><h3><a name="main" href="#main">Main Commands</a></h3></td></tr>
+				</thead>
+				<tbody>
+					{earlycommands % helpentry}
+				</tbody>
+			</table>
+
+			<table class="table table-help">
+				<thead>
+					<tr><td colspan="2"><h3><a name="other" href="#other">Other Commands</a></h3></td></tr>
+				</thead>
+				<tbody>
+					{othercommands % helpentry}
+				</tbody>
+			</table>
+			
+		</div>
+
+		
+	</div>
+
+
+{footer}
