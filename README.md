@@ -16,3 +16,7 @@
 
     [web]
     style = boundstate
+
+## Screenshots
+
+![commits](https://dl.dropbox.com/u/4186242/hgweb-boundstate-theme.png)
