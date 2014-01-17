@@ -10,7 +10,7 @@
   Create a link to the static files:
 
     # cd /usr/share/mercurial/templates/static
-    # ln -s boundstate ../boundstate/static/boundstate
+    # ln -s ../boundstate/static/boundstate boundstate
 
   Edit your `hgweb.config` file to use the `boundstate` theme:
 
