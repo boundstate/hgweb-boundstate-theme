@@ -132,7 +132,7 @@ fileannotatechild = '
 tags = tags.tmpl
 tagentry = '<li><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{tag|escape}</a></li>'
 bookmarks = bookmarks.tmpl
-bookmarkentry = '<a href="{url}rev/{node|short}{sessionvars%urlparameter}">{bookmark|escape}</a>'
+bookmarkentry = '<li><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{bookmark|escape}</a></li>'
 branches = branches.tmpl
 branchentry = '
   <tr class="tagEntry parity{parity}">
