@@ -1,93 +1,72 @@
 {header}
-	<title>{repo|escape}: {node|short}</title>
-	<script src="{staticurl}boundstate/js/jquery.min.js"></script>
+    <title>{repo|escape}: {node|short}</title>
+    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <body>
-	
-	<div class="navbar">	
-		<div class="container">
-			<a class="brand" href="{logourl}">&nbsp;</a>
-			<ul class="nav">
-				<li class="active">
-					<a href="/">Repositories</a>
-				</li>
-			</ul>
-			<ul class="nav pull-right">
-				<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div id="content" class="container">
 
-		<h1>{repo|escape}</h1>
+{bar0}
 
-		<form id="search" class="form-search" action="{url}log">
-			{sessionvars%hiddenformentry}
-			<div class="input-append">
-				<input name="rev" id="search1" type="text" placeholder="Author, revision, filename, or commit" /><a class="btn" onclick="document.getElementById('search').submit()"><i class="icon-search"></i></a>
-			</div>
-		</form>
-		
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="{url}shortlog">Commits</a></li>
-			<li><a href="{url}file">Files</a></li>
-		</ul>
+{bar1}
 
-		<div class="revision-details">
-			<span class="author">{author|person}</span> 
-			<span class="date">{date|shortdate}</span> 
-			{parent%changesetparent} 
-			{child%changesetchild}
-		</div>
-		
-		<p>
-			<span class="revision">{rev}:{node|short}</span> 
-			{changesetbranch%changelogbranchname} 
-			{changesettag} 
-			{changesetbookmark}	
-			<a class="files" href="{url}file/{node|short}{path|urlescape}{sessionvars%urlparameter}">Browse Files</a>
-		</p>
-		<p class="description">{desc|strip|escape|nonempty}</p>
-		<p class="files">{files}</p>
-		
-		<div class="well">
-			<div id="tabs" class="btn-group">
-				<a class="btn active" href="#diff">Diff to previous</a>
-				<a class="btn" href="#diffstat">Statistics</a>
-			</div>
-		</div>
-		
-		<div id="tab-content">
-			
-			<div id="diff" class="overflow">
-				{diff}
-			</div>
+<div id="content" class="container">
 
-			<div id="diffstat" class="diffstat" style="display:none;">
-				<p>{diffsummary}</p>
-				<table class="table">
-					<thead><tr><th>File</th><th>Total</th><th>Ratio</th></tr></thead>
-					<tbody>{diffstat}</tbody>
-				</table>
-			</div>
+    <ul class="nav nav-tabs">
+        <li ><a href="{url}">Summary</a></li>
+        <li ><a href="{url}file">files</a></li>
+        <li class="active"><a href="{url}shortlog">commits</a></li>
+    </ul>
 
-		</div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            changeset:author:{author|person};date:{date|shortdate};
+            parent:{parent%changesetparent}
+            child:{child%changesetchild}
+        </div>
+        <div class="panel-body">
+            <p>
+                <span class="revision">{rev}:{node|short}</span>
+                {changesetbranch%changelogbranchname}
+                {changesettag}
+                {changesetbookmark}
+                <a class="files" href="{url}file/{node|short}{path|urlescape}{sessionvars%urlparameter}">Browse Files</a>
+            </p>
+            <p class="description">{desc|strip|escape|nonempty}</p>
+            <p class="files">{files}</p>
+        </div>
+    </div>
+    <div class="well">
+        <div id="tabs" class="btn-group">
+            <a class="btn active" href="#diff">Diff to previous</a>
+            <a class="btn" href="#diffstat">Statistics</a>
+        </div>
+    </div>
 
-	</div>
-	
-	<script type="text/javascript">
-		$("#tabs a").on("click", function()\{
-			$("#tabs a").removeClass("active");
-			$(this).addClass("active");
-			$("#tab-content > div").hide();
-			$("#tab-content").find($(this).attr("href")).show();
-			return false;
-		});
-		
-		$("#diffstat a").on("click", function()\{
-			$("#tabs a:first").click();
-		});
-	</script>
-	
+    <div id="tab-content">
+        <div id="diff" class="overflow">
+            {diff}
+        </div>
+        <div id="diffstat" class="diffstat" style="display:none;">
+            <p>{diffsummary}</p>
+            <table class="table">
+                <thead><tr><th>File</th><th>Total</th><th>Ratio</th></tr></thead>
+                <tbody>{diffstat}</tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#tabs a").on("click", function()\{
+        $("#tabs a").removeClass("active");
+        $(this).addClass("active");
+        $("#tab-content > div").hide();
+        $("#tab-content").find($(this).attr("href")).show();
+        return false;
+    });
+
+    $("#diffstat a").on("click", function()\{
+        $("#tabs a:first").click();
+    });
+</script>
+
 {footer}

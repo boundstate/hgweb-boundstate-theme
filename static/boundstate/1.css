@@ -1,0 +1,31 @@
+ul#graphnodes li {
+overflow: hidden;
+}
+ul#graphnodes li, ul#nodebgs li {
+height: 39px;
+line-height:18px;
+}
+canvas {
+margin: 0;
+position: absolute;
+top: -13px;
+z-index: 5;
+}
+div#wrapper {
+margin: 18px 0;
+padding: 0;
+position: relative;
+}
+ul#nodebgs {
+list-style: none inside none;
+margin: 0;
+padding: 0;
+top: 0;
+}
+#graphnodes{
+    position:absolute;
+    top:0;
+}
+#wrapper{
+    position:relative;
+}

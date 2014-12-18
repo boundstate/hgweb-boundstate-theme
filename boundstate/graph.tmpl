@@ -4,175 +4,153 @@
    href="{url}atom-log" title="Atom feed for {repo|escape}: log" />
 <link rel="alternate" type="application/rss+xml"
    href="{url}rss-log" title="RSS feed for {repo|escape}: log" />
-<!--[if IE]><script type="text/javascript" src="{staticurl}boundstate/excanvas.js"></script><![endif]-->
-<script src="{staticurl}boundstate/js/jquery.min.js"></script>
-<script src="{staticurl}boundstate/js/bootstrap-dropdown.js"></script>
+<!--[if IE]><script type="text/javascript" src="{staticurl}excanvas.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" href="{staticurl}boundstate/1.css"/>
 </head>
 <body>
-	
-	<div class="navbar">	
-		<div class="container">
-			<a class="brand" href="{logourl}">&nbsp;</a>
-			<ul class="nav">
-				<li class="active">
-					<a href="/">Repositories</a>
-				</li>
-			</ul>
-			<ul class="nav pull-right">
-				<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div id="content" class="container">
 
-		<h1>{repo|escape}</h1>
+{bar0}
 
-		<form id="search" class="form-search" action="{url}log">
-			{sessionvars%hiddenformentry}
-			<div class="input-append">
-				<input name="rev" id="search1" type="text" placeholder="Author, revision, filename, or commit" /><a class="btn" onclick="document.getElementById('search').submit()"><i class="icon-search"></i></a>
-			</div>			
-		</form>
-		
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="{url}">Commits</a></li>			
-			<li><a href="{url}file">Files</a></li>
-		</ul>
-		
-		<div class="btn-group pull-right">
-			<a class="btn" href="{url}shortlog/{node|short}{sessionvars%urlparameter}"><i class="icon-th-list"></i> List</a>
-			<a class="btn active" href="{url}graph/{node|short}{sessionvars%urlparameter}"><i class="icon-graph"></i> Graph</a>
-		</div>
-		
-		<div class="btn-toolbar">			
-			<div class="btn-group">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					<i class="icon-tag"></i> Tags
-					<span class="caret"></span>
-				</a>
-				<ul id="tag-menu" class="dropdown-menu">
-					<li><span class="loading">Loading...</span></li>
-				</ul>
-			</div>
+{bar1}
 
-			<div class="btn-group">
-				<a class="btn dropdown-toggle disabled" data-toggle="dropdown" href="#">
-					<i class="icon-bookmark"></i> Bookmarks
-					<span class="caret"></span>
-				</a>
-				<ul id="bookmark-menu" class="dropdown-menu">
-					<li><span class="loading">Loading...</span></li>
-				</ul>
-			</div>		
-			
-			<div class="btn-group">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					<i class="icon-leaf"></i> Branches
-					<span class="caret"></span>
-				</a>
-				<ul id="branch-menu" class="dropdown-menu">
-					<li><span class="loading">Loading...</span></li>
-				</ul>
-			</div>
-		</div>
+    <div id="content" class="container">
+       <ul class="nav nav-tabs">
+            <li ><a href="{url}">Summary</a></li>
+            <li class="active" ><a href="{url}file">files</a></li>
+            <li><a href="{url}shortlog">commits</a></li>
+        </ul>
 
-		<noscript><p>The revision graph only works with JavaScript-enabled browsers.</p></noscript>
+        <div class="btn-toolbar" style="margin:5px 0;">
+            <div class="btn-group pull-right">
+                <a class="btn btn-default " href="{url}shortlog/{node|short}{sessionvars%urlparameter}"><i class="glyphicon glyphicon-th-list"></i> List</a>
+                <a class="btn btn-default active" href="{url}graph/{node|short}{sessionvars%urlparameter}"><i class="glyphicon glyphicon-random"></i> Graph</a>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="glyphicon glyphicon-tags"></i> Tags
+                    <span class="caret"></span></button>
+                <ul id="tag-menu" class="dropdown-menu">
+                    <li><span class="loading">Loading...</span></li>
+                </ul>
+            </div>
 
-		<div id="wrapper">
-			<ul id="nodebgs"></ul>
-			<canvas id="graph" width="480" height="{canvasheight}"></canvas>
-			<ul id="graphnodes"></ul>
-		</div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="glyphicon glyphicon-bookmark"></i> Bookmarks
+                    <span class="caret"></span>
+                </button>
+                <ul id="bookmark-menu" class="dropdown-menu">
+                    <li><span class="loading">Loading...</span></li>
+                </ul>
+            </div>
 
-		<script type="text/javascript">
-		<!-- hide script content
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="glyphicon glyphicon-random"></i> Branches
+                    <span class="caret"></span>
+                </button>
+                <ul id="branch-menu" class="dropdown-menu">
+                    <li><span class="loading">Loading...</span></li>
+                </ul>
+            </div>
+        </div>
 
-		var data = {jsdata|json};
-		var graph = new Graph();
-		graph.scale({bg_height});
+        <noscript><p>The revision graph only works with JavaScript-enabled browsers.</p></noscript>
 
-		graph.edge = function(x0, y0, x1, y1, color) \{
+        <div id="wrapper">
+            <ul id="nodebgs"></ul>
+            <canvas id="graph" width="480" height="{canvasheight}"></canvas>
+            <ul id="graphnodes"></ul>
+        </div>
 
-			this.setColor(color, 0.0, 0.65);
-			this.ctx.beginPath();
-			this.ctx.moveTo(x0, y0);
-			this.ctx.lineTo(x1, y1);
-			this.ctx.stroke();
+        <script type="text/javascript">
+        <!-- hide script content
 
-		}
+        var data = {jsdata|json};
+        var graph = new Graph();
+        graph.scale({bg_height});
 
-		var revlink = '<li style="_STYLE"><span class="desc">';
-		revlink += '<a href="{url}rev/_NODEID{sessionvars%urlparameter}" title="_NODEID">_DESC</a>';
-		revlink += '</span>_TAGS<span class="info">_DATE, by _USER</span></li>';
+        graph.edge = function(x0, y0, x1, y1, color) \{
 
-		graph.vertex = function(x, y, color, parity, cur) \{
+            this.setColor(color, 0.0, 0.65);
+            this.ctx.beginPath();
+            this.ctx.moveTo(x0, y0);
+            this.ctx.lineTo(x1, y1);
+            this.ctx.stroke();
 
-			this.ctx.beginPath();
-			color = this.setColor(color, 0.25, 0.75);
-			this.ctx.arc(x, y, radius, 0, Math.PI * 2, true);
-			this.ctx.fill();
+        }
 
-			var bg = '<li class="bg parity' + parity + '"></li>';
-			var left = (this.columns + 1) * this.bg_height;
-			var nstyle = 'padding-left: ' + left + 'px;';
-			var item = revlink.replace(/_STYLE/, nstyle);
-			item = item.replace(/_PARITY/, 'parity' + parity);
-			item = item.replace(/_NODEID/, cur[0]);
-			item = item.replace(/_NODEID/, cur[0]);
-			item = item.replace(/_DESC/, cur[3]);
-			item = item.replace(/_USER/, cur[4]);
-			item = item.replace(/_DATE/, cur[5]);
+        var revlink = '<li style="_STYLE"><span class="desc">';
+        revlink += '<a href="{url}rev/_NODEID{sessionvars%urlparameter}" title="_NODEID">_DESC</a>';
+        revlink += '</span>_TAGS<span class="info">_DATE, by _USER</span></li>';
 
-			var tagspan = '';
-			if (cur[7].length || cur[8].length || (cur[6][0] != 'default' || cur[6][1])) \{
-				tagspan = ' <span class="logtags">';
-				if (cur[6][1]) \{
-					tagspan += '<a class="tag branchhead" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
-					tagspan += cur[6][0] + '</a> ';
-				} else if (!cur[6][1] && cur[6][0] != 'default') \{
-					tagspan += '<a class="tag branchname" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
-					tagspan += cur[6][0] + '</a> ';
-				}
-				if (cur[7].length) \{
-					for (var t in cur[7]) \{
-						var tag = cur[7][t];
-						tagspan += '<span class="tag">' + tag + '</span> ';
-					}
-				}
-				if (cur[8].length) \{
-					for (var b in cur[8]) \{
-						var bookmark = cur[8][b];
-						tagspan += '<span class="tag">' + bookmark + '</span> ';
-					}
-				}
-				tagspan += '</span>';
-			}
+        graph.vertex = function(x, y, color, parity, cur) \{
 
-			item = item.replace(/_TAGS/, tagspan);
-			return [bg, item];
+            this.ctx.beginPath();
+            color = this.setColor(color, 0.25, 0.75);
+            this.ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+            this.ctx.fill();
 
-		}
+            var bg = '<li class="bg parity' + parity + '"></li>';
+            var left = (this.columns + 1) * this.bg_height;
+            var nstyle = 'padding-left: ' + left + 'px;';
+            var item = revlink.replace(/_STYLE/, nstyle);
+            item = item.replace(/_PARITY/, 'parity' + parity);
+            item = item.replace(/_NODEID/, cur[0]);
+            item = item.replace(/_NODEID/, cur[0]);
+            item = item.replace(/_DESC/, cur[3]);
+            item = item.replace(/_USER/, cur[4]);
+            item = item.replace(/_DATE/, cur[5]);
 
-		graph.render(data);
+            var tagspan = '';
+            if (cur[7].length || cur[8].length || (cur[6][0] != 'default' || cur[6][1])) \{
+                tagspan = ' <span class="logtags">';
+                if (cur[6][1]) \{
+                    tagspan += '<a class="tag branchhead" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
+                    tagspan += cur[6][0] + '</a> ';
+                } else if (!cur[6][1] && cur[6][0] != 'default') \{
+                    tagspan += '<a class="tag branchname" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
+                    tagspan += cur[6][0] + '</a> ';
+                }
+                if (cur[7].length) \{
+                    for (var t in cur[7]) \{
+                        var tag = cur[7][t];
+                        tagspan += '<span class="tag">' + tag + '</span> ';
+                    }
+                }
+                if (cur[8].length) \{
+                    for (var b in cur[8]) \{
+                        var bookmark = cur[8][b];
+                        tagspan += '<span class="tag">' + bookmark + '</span> ';
+                    }
+                }
+                tagspan += '</span>';
+            }
 
-		// stop hiding script -->
-		</script>
-		<a name="more" class="btn" href="{url}graph/{rev}{morevars%urlparameter}#more">More Commits</a>
+            item = item.replace(/_TAGS/, tagspan);
+            return [bg, item];
 
-	</div>
-	
-	<script type="text/javascript">	
-		$("#tag-menu").load("{url}tags{sessionvars%urlparameter}");	
-		$("#bookmark-menu").load("{url}bookmarks{sessionvars%urlparameter}", function()\{
-			if ($("li", this).length > 0) 
-				$(this).closest(".btn-group").find(".btn").removeClass("disabled");
-		});	
-		$("#branch-menu").load("{url}branches{sessionvars%urlparameter}", function()\{
-			$("a", this).each(function()\{
-				$(this).attr("href", "{url}graph/" + $(this).attr("href"));
-			});
-		});			
-	</script>
+        }
+
+        graph.render(data);
+
+        // stop hiding script -->
+        </script>
+        <a name="more" class="btn btn-primary" href="{url}graph/{rev}{morevars%urlparameter}#more">More Commits</a>
+
+    </div>
+
+    <script type="text/javascript">
+        $("#tag-menu").load("{url}tags{sessionvars%urlparameter}");
+        $("#bookmark-menu").load("{url}bookmarks{sessionvars%urlparameter}", function()\{
+            if ($("li", this).length > 0)
+                $(this).closest(".btn-group").find(".btn").removeClass("disabled");
+        });
+        $("#branch-menu").load("{url}branches{sessionvars%urlparameter}", function()\{
+            $("a", this).each(function()\{
+                $(this).attr("href", "{url}graph/" + $(this).attr("href"));
+            });
+        });
+    </script>
 
 {footer}

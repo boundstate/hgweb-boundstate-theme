@@ -1,82 +1,75 @@
 {header}
-	<title>{repo|escape}: {node|short} {file|escape}</title>
-	<script src="{staticurl}boundstate/js/jquery.min.js"></script>
-	<script src="{staticurl}boundstate/js/bootstrap-dropdown.js"></script>
+    <title>{repo|escape}: {node|short} {file|escape}</title>
+    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{staticurl}boundstate/js/bootstrap-dropdown.js"></script>
 </head>
 <body>
-	
-	<div class="navbar">	
-		<div class="container">
-			<a class="brand" href="{logourl}">&nbsp;</a>
-			<ul class="nav">
-				<li class="active">
-					<a href="/">Repositories</a>
-				</li>
-			</ul>
-			<ul class="nav pull-right">
-				<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div id="content" class="container">
-	
-		<h1>{repo|escape}</h1>
-		
-		<form id="search" class="form-search" action="{url}log">
-			{sessionvars%hiddenformentry}
-			<div class="input-append">
-				<input name="rev" id="search1" type="text" placeholder="Author, revision, filename, or commit" /><a class="btn" onclick="document.getElementById('search').submit()"><i class="icon-search"></i></a>
-			</div>
-		</form>
 
-		<ul class="nav nav-tabs">
-			<li><a href="{url}shortlog">Commits</a></li>
-			<li class="active"><a href="{url}file">Files</a></li>
-		</ul>
+{bar0}
 
-		<div class="revision-details">
-			<span class="author">{author|person}</span>			 
-			<span class="date">{date|shortdate}</span> 
-			{parent%filerevparent} 
-			{child%filerevchild}
-		</div>
+{bar1}
 
-		<p>
-			<a href="{url}rev/{node|short}{sessionvars%urlparameter}" class="revision">{rev}:{node|short}</a>
-			<a class="latest" href="{url}file/tip/{file|urlescape}{sessionvars%urlparameter}">Go to Latest</a>
-		</p>
-		<h3>{repo|escape}/{file|escape}</h3>
-		<p class="description">{desc|strip|escape|nonempty} {changesettag}</p>
+<div id="content" class="container">
+    <ul class="nav nav-tabs">
+        <li ><a href="{url}">Summary</a></li>
+        <li class="active" ><a href="{url}file">files</a></li>
+        <li ><a href="{url}shortlog">commits</a></li>
+    </ul>
 
-		<div class="well">			
-			<div class="pull-right">
-				<a href="{url}raw-file/{node|short}/{file|urlescape}">Download raw file</a>
-			</div>			
-			<div class="btn-group">
-				<a class="btn active" href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">View source</a>
-				<a class="btn" href="{url}diff/{node|short}/{file|urlescape}{sessionvars%urlparameter}">Diff to previous</a>
-				<a class="btn" href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}">Annotate</a>
-			</div>
-		
-			<div class="btn-group">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					History
-					<span class="caret"></span>
-				</a>
-				<ul id="history-menu" class="dropdown-menu">
-					<li><span class="loading">Loading...</span></li>
-				</ul>
-			</div>	
-		</div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        <strong>{repo|escape}/{file|escape}</strong>
+        </div>
+        <div class="panel-body">
+            <div class="revision-details">
+                <dl class="dl-horizontal">
+                  <dt>author</dt>
+                  <dd>{author|person}</dd>
+                  <dt>date</td>
+                  <dd>{date|shortdate}</dd>
+                  <dt>parent:</td>
+                  <dd>{parent%filerevparent}</dd>
+                  <dt>child</td>
+                  <dd>{child%filerevchild}</dd>
+                  <dt>rev:</dt>
+                  <dd><a href="{url}rev/{node|short}{sessionvars%urlparameter}" class="revision">{rev}:{node|short}</a></dd>
+                  <dt>lasted:</dt>
+                  <dd><a class="latest" href="{url}file/tip/{file|urlescape}{sessionvars%urlparameter}">Go to Latest</a></dd>
+                  <dt>comment:</dt>
+                  <dd>{desc|strip|escape|nonempty} {changesettag}</dd>
+                </dl>
+            </div>
+            <div class="btn-toolbar">
+                <div class="pull-right">
+                    <a href="{url}raw-file/{node|short}/{file|urlescape}">Download raw file</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default active" href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">View source</a>
+                    <a class="btn btn-default " href="{url}diff/{node|short}/{file|urlescape}{sessionvars%urlparameter}">Diff to previous</a>
+                    <a class="btn btn-default " href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}">Annotate</a>
+                </div>
 
-		<div class="overflow">
-			{text%fileline}
-		</div>
-	</div>
-	
-	<script type="text/javascript">		
-		$("#history-menu").load("{url}log/{node|short}/{file|urlescape}{sessionvars%urlparameter}");
-	</script>
+                <div class="btn-group">
+                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                        History
+                        <span class="caret"></span>
+                    </a>
+                    <ul id="history-menu" class="dropdown-menu">
+                        <li><span class="loading">Loading...</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="well overflow">
+                {text%fileline}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#history-menu").load("{url}log/{node|short}/{file|urlescape}{sessionvars%urlparameter}");
+</script>
 
 {footer}

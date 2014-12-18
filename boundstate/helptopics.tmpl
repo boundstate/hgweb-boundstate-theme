@@ -2,62 +2,67 @@
 <title>Help: {title}</title>
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">HG Repositories</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">About</a></li>
+        <li role="presentation"><a href="#">Contact</a></li>
+        <li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-	<div class="navbar">	
-		<div class="container">
-			<a class="brand" href="{logourl}">&nbsp;</a>
-			<ul class="nav">
-				<li class="active">
-					<a href="/">Repositories</a>
-				</li>
-			</ul>
-			<ul class="nav pull-right">
-				<li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div id="content" class="container">
+<div id="content" class="container">
 
-		
-		<div class="page-header">
-			<h1>Help</h1>
-		</div>
+    <div class="page-header">
+        <h1>Help</h1>
+    </div>
 
-		
-		<div class="row">
-			
-			<table class="table table-help">
-				<thead>
-					<tr><td colspan="2"><h3><a name="main" href="#topics">Topics</a></h3></td></tr>
-				</thead>
-				<tbody>
-					{topics % helpentry}
-				</tbody>
-			</table>
+    <div class="row">
 
-			<table class="table table-help">
-				<thead>
-					<tr><td colspan="2"><h3><a name="main" href="#main">Main Commands</a></h3></td></tr>
-				</thead>
-				<tbody>
-					{earlycommands % helpentry}
-				</tbody>
-			</table>
+        <table class="table table-help">
+            <thead>
+                <tr><td colspan="2"><h3><a name="main" href="#topics">Topics</a></h3></td></tr>
+            </thead>
+            <tbody>
+                {topics % helpentry}
+            </tbody>
+        </table>
 
-			<table class="table table-help">
-				<thead>
-					<tr><td colspan="2"><h3><a name="other" href="#other">Other Commands</a></h3></td></tr>
-				</thead>
-				<tbody>
-					{othercommands % helpentry}
-				</tbody>
-			</table>
-			
-		</div>
+        <table class="table table-help">
+            <thead>
+                <tr><td colspan="2"><h3><a name="main" href="#main">Main Commands</a></h3></td></tr>
+            </thead>
+            <tbody>
+                {earlycommands % helpentry}
+            </tbody>
+        </table>
 
-		
-	</div>
+        <table class="table table-help">
+            <thead>
+                <tr><td colspan="2"><h3><a name="other" href="#other">Other Commands</a></h3></td></tr>
+            </thead>
+            <tbody>
+                {othercommands % helpentry}
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
 
 
 {footer}
