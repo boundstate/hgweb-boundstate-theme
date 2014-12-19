@@ -1,0 +1,84 @@
+{header}
+    <title>{repo|escape}: log</title>
+    <link rel="alternate" type="application/atom+xml" href="{url}atom-log" title="Atom feed for {repo|escape}" />
+    <link rel="alternate" type="application/rss+xml" href="{url}rss-log" title="RSS feed for {repo|escape}" />
+</head>
+<body>
+
+{bar0}
+
+{bar1}
+
+
+<div id="content" class="container">
+
+    <ul class="nav nav-tabs">
+        <li ><a href="{url}">Summary</a></li>
+        <li class="" ><a href="{url}file">files</a></li>
+        <li class="active"><a href="{url}shortlog">commits</a></li>
+    </ul>
+
+    <div class="btn-toolbar" style="margin:5px 0;">
+        <div class="btn-group pull-right">
+            <a class="btn btn-default active" href="{url}shortlog/{node|short}{sessionvars%urlparameter}"><i class="glyphicon glyphicon-th-list"></i> List</a>
+            <a class="btn btn-default" href="{url}graph/{node|short}{sessionvars%urlparameter}"><i class="glyphicon glyphicon-random"></i> Graph</a>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <i class="glyphicon glyphicon-tags"></i> Tags
+                <span class="caret"></span></button>
+            <ul id="tag-menu" class="dropdown-menu">
+                <li><span class="loading">Loading...</span></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="glyphicon glyphicon-bookmark"></i> Bookmarks
+                <span class="caret"></span>
+            </button>
+            <ul id="bookmark-menu" class="dropdown-menu">
+                <li><span class="loading">Loading...</span></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="glyphicon glyphicon-random"></i> Branches
+                <span class="caret"></span>
+            </button>
+            <ul id="branch-menu" class="dropdown-menu">
+                <li><span class="loading">Loading...</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th class="age">Age</th>
+                <th class="author">Author</th>
+                <th class="description">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {entries%shortlogentry}
+        </tbody>
+    </table>
+    <a name="more" class="btn btn-primary" href="{url}shortlog/{rev}{morevars%urlparameter}#more">More Commits</a>
+</div>
+
+<script type="text/javascript">
+    $("#tag-menu").load("{url}tags{sessionvars%urlparameter}");
+    $("#bookmark-menu").load("{url}bookmarks{sessionvars%urlparameter}", function()\{
+        if ($("li", this).length > 0)
+            $(this).closest(".btn-group").find(".btn").removeClass("disabled");
+    });
+    $("#branch-menu").load("{url}branches{sessionvars%urlparameter}", function()\{
+        $("a", this).each(function()\{
+            $(this).attr("href", "{url}shortlog/" + $(this).attr("href"));
+        });
+    });
+</script>
+
+{footer}

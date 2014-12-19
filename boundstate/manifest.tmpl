@@ -1,0 +1,47 @@
+{header}
+    <title>{repo|escape}: {node|short} {path|escape}</title>
+</head>
+<body>
+
+{bar0}
+
+{bar1}
+
+<div id="content" class="container">
+    <ul class="nav nav-tabs">
+        <li ><a href="{url}">Summary</a></li>
+        <li class="active" ><a href="{url}file">files</a></li>
+        <li><a href="{url}shortlog">commits</a></li>
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{url}rev/{node|short}{sessionvars%urlparameter}" class="revision">
+            <span class="label label-default">rev:{rev}({node|short})</span></a>
+            <span class="label label-primary">{tags%changelogtag}</span>
+            &nbsp;<span class="date">{date|shortdate}</span>
+            &nbsp;<span class="downloads">
+                {archives%archiveentry}
+            </span>
+        </div>
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th class="filename">Name</th>
+                    <th class="size">Size</th>
+                    <th class="permissions">Permissions</th>
+                </tr>
+                <tr class="fileline parity{upparity}">
+                    <td class="filename"><a href="{url}file/{node|short}{up|urlescape}{sessionvars%urlparameter}">[up]</a></td>
+                    <td class="size"></td>
+                    <td class="permissions"><tt>drwxr-xr-x</tt></td>
+                </tr>
+            </thead>
+            <tbody>
+                {dentries%direntry}
+                {fentries%fileentry}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{footer}

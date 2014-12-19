@@ -2,21 +2,33 @@
 
   A clean, modern theme for Mercurial's [hgweb](http://mercurial.selenic.com/wiki/HgWebDirStepByStep]) using the [Bootstrap](http://twitter.github.com/bootstrap/) CSS framework.
 
+  And this is a branch that use bootstrap3 series.
+
 ## Installation
 
-  Download the files to a new folder `boundstate` in your hgweb themes folder
+Download all files into temporary folder.
+
+Copy folder `boundstate` in your hgweb themes folder
 (`/usr/share/mercurial/templates` on default Ubuntu installs).
 
-  Create a link to the static files:
+Copy contents in `static` to hgweb themes `static` folder (`/usr/share/mercurial/templates/static`).
 
-    # cd /usr/share/mercurial/templates/static
-    # ln -s ../boundstate/static/boundstate boundstate
-
-  Edit your `hgweb.config` file to use the `boundstate` theme:
+Edit your `hgweb.config` file to use the `boundstate` theme:
 
     [web]
     style = boundstate
 
+## About source code
+
+License:(??)
+
+- Folder `boundstate` is main template folder
+- Folder `static/b3` is bootstrap style version 3.3.1
+- Folder `static/boundstate` place assets used by this theme.
+
+notes:
+  new summary.tmpl added for show readme file (use hgweb plugin).
+
 ## Screenshots
 
-![commits](https://dl.dropbox.com/u/4186242/hgweb-boundstate-theme.png)
+![commits](preview.png)

@@ -1,0 +1,228 @@
+default = 'summary'
+
+mimetype = 'text/html; charset={encoding}'
+header = header.tmpl
+footer = footer.tmpl
+search = search.tmpl
+
+summary = summary.tmpl
+changelog = shortlog.tmpl
+shortlog = shortlog.tmpl
+shortlogentry = shortlogentry.tmpl
+graph = graph.tmpl
+help = help.tmpl
+helptopics = helptopics.tmpl
+
+helpentry = '<tr><td><a href="{url}help/{topic|escape}{sessionvars%urlparameter}">{topic|escape}</a></td><td>{summary|escape}</td></tr>'
+
+naventry = '<a href="{url}log/{node|short}{sessionvars%urlparameter}">{label|escape}</a> '
+navshortentry = '<a href="{url}shortlog/{node|short}{sessionvars%urlparameter}">{label|escape}</a> '
+navgraphentry = '<a href="{url}graph/{node|short}{sessionvars%urlparameter}">{label|escape}</a> '
+filenaventry = '<a href="{url}log/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{label|escape}</a> '
+filedifflink = '<a href="{url}diff/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{file|escape}</a> '
+filenodelink = '<a href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{file|escape}</a> '
+filenolink = '<span>{file|escape}</span> '
+fileellipses = '...'
+diffstatlink = diffstat.tmpl
+diffstatnolink = diffstat.tmpl
+changelogentry = shortlogentry.tmpl
+searchentry = shortlogentry.tmpl
+changeset = changeset.tmpl
+manifest = manifest.tmpl
+
+nav = '{before%naventry} {after%naventry}'
+navshort = '{before%navshortentry}{after%navshortentry}'
+navgraph = '{before%navgraphentry}{after%navgraphentry}'
+filenav = '{before%filenaventry}{after%filenaventry}'
+
+direntry = '
+  <tr class="fileline parity{parity}">
+    <td class="name">
+      <a href="{url}file/{node|short}{path|urlescape}{sessionvars%urlparameter}">
+        <i class="icon-folder-close"></i> {basename|escape}/
+      </a>
+      <a href="{url}file/{node|short}{path|urlescape}/{emptydirs|urlescape}{sessionvars%urlparameter}">
+        {emptydirs|escape}
+      </a>
+    </td>
+    <td class="size"></td>
+    <td class="permissions"><tt>drwxr-xr-x</tt></td>
+  </tr>'
+
+fileentry = '
+  <tr class="fileline parity{parity}">
+    <td class="filename">
+      <a href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">
+        <i class="icon-file"></i> {basename|escape}
+      </a>
+    </td>
+    <td class="size">{size}</td>
+    <td class="permissions"><tt>{permissions|permissions}</tt></td>
+  </tr>'
+
+filerevision = filerevision.tmpl
+fileannotate = fileannotate.tmpl
+filediff = filediff.tmpl
+filelog = filelog.tmpl
+fileline = '
+  <div class="parity{parity} source"><a href="#{lineid}" id="{lineid}">{linenumber}</a> {line|escape}</div>'
+filelogentry = filelogentry.tmpl
+
+annotateline = '
+  <tr class="parity{parity}">
+    <td class="annotate">
+      <a href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}#{targetline}"
+         title="{node|short}: {desc|escape|firstline}">{author|user}@{rev}</a>
+    </td>
+    <td class="source"><a href="#{lineid}" id="{lineid}">{linenumber}</a> {line|escape}</td>
+  </tr>'
+
+diffblock = '<div class="source bottomline parity{parity}"><pre>{lines}</pre></div>'
+difflineplus = '<a href="#{lineid}" id="{lineid}">{linenumber}</a> <span class="plusline">{line|escape}</span>'
+difflineminus = '<a href="#{lineid}" id="{lineid}">{linenumber}</a> <span class="minusline">{line|escape}</span>'
+difflineat = '<a href="#{lineid}" id="{lineid}">{linenumber}</a> <span class="atline">{line|escape}</span>'
+diffline = '<a href="#{lineid}" id="{lineid}">{linenumber}</a> {line|escape}'
+
+changelogparent = '
+  <tr>
+    <th class="parent">parent {rev}:</th>
+    <td class="parent"><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a></td>
+  </tr>'
+
+changesetparent = '<span>Parent:<a class="revision" href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a></span>'
+
+filerevparent = '<span>Parent:<a class="revision" href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{rename%filerename}{node|short}</a></span>'
+filerevchild = '<span>Child:<a class="revision" href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{node|short}</a></span>'
+
+filerename = '{file|escape}@'
+filelogrename = '
+  <span class="base">
+    base
+    <a href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">
+      {file|escape}@{node|short}
+    </a>
+  </span>'
+fileannotateparent = '
+  <tr>
+    <td class="metatag">parent:</td>
+    <td>
+      <a href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}">
+        {rename%filerename}{node|short}
+      </a>
+    </td>
+  </tr>'
+changesetchild = '<span>Child:<a class="revision" href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a></span>'
+changelogchild = '
+  <tr>
+    <th class="child">child</th>
+    <td class="child">
+      <a href="{url}rev/{node|short}{sessionvars%urlparameter}">
+        {node|short}
+      </a>
+    </td>
+  </tr>'
+fileannotatechild = '
+  <tr>
+    <td class="metatag">child:</td>
+    <td>
+      <a href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}">
+        {node|short}
+      </a>
+    </td>
+  </tr>'
+tags = tags.tmpl
+tagentry = '<li><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{tag|escape}</a></li>'
+bookmarks = bookmarks.tmpl
+bookmarkentry = '<li><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{bookmark|escape}</a></li>'
+branches = branches.tmpl
+branchentry = '
+  <tr class="tagEntry parity{parity}">
+    <td>
+      <a href="{url}shortlog/{node|short}{sessionvars%urlparameter}" class="{status}">
+        {branch|escape}
+      </a>
+    </td>
+    <td class="node">
+      {node|short}
+    </td>
+  </tr>'
+changelogtag = '<span class="tag">{name|escape}</span> '
+changesettag = '<span class="tag">{tag|escape}</span> '
+changesetbookmark = '<span class="tag">{bookmark|escape}</span> '
+changelogbranchhead = '<a href="{url}shortlog/{name%urlparameter}" class="label label-success">{name|escape}</a> '
+changelogbranchname = '<a href="{url}shortlog/{name%urlparameter}" class="label label-success">{name|escape}</a> '
+
+filediffparent = '
+  <tr>
+    <th class="parent">parent {rev}:</th>
+    <td class="parent"><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a></td>
+  </tr>'
+filelogparent = '
+  <tr>
+    <th>parent {rev}:</th>
+    <td><a href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{node|short}</a></td>
+  </tr>'
+filediffchild = '
+  <tr>
+    <th class="child">child {rev}:</th>
+    <td class="child"><a href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a>
+  </td>
+  </tr>'
+filelogchild = '
+  <tr>
+    <th>child {rev}:</th>
+    <td><a href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">{node|short}</a></td>
+  </tr>'
+
+indexentry = '
+  <tr class="parity{parity}">
+    <td><a href="{url}{sessionvars%urlparameter}">{name|escape}</a></td>
+    <td>{description}</td>
+    <td>{contact|obfuscate}</td>
+    <td class="age">{lastchange|rfc822date}</td>
+    <td class="downloads">{archives%indexarchiveentry}</td>
+  </tr>\n'
+indexarchiveentry = '<a href="{url}archive/{node|short}{extension|urlescape}">{type|escape}</a>'
+index = index.tmpl
+archiveentry = '<a href="{url}archive/{node|short}{extension|urlescape}"><i class="icon-download"></i>{type|escape}</a>'
+notfound = notfound.tmpl
+error = error.tmpl
+urlparameter = '{separator}{name}={value|urlescape}'
+hiddenformentry = '<input type="hidden" name="{name}" value="{value|escape}" />'
+
+bar0 ='<nav class="navbar navbar-default" role="navigation">
+ <div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">HG Repositories</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+            <li><a href="{url}help{sessionvars%urlparameter}">Help</a></li>
+          </ul>
+        </div>
+      </div>
+ </nav>'
+
+bar1 = '<div class="container navbar" style="margin-bottom:0px" >
+        <div class="navbar-header">
+          <div class="navbar-brand">
+            {repo|escape} <small>({desc})</small>
+           </div>
+        </div>
+        <form id="search" class="navbar-form" action="{url}log">
+            {sessionvars%hiddenformentry}
+            <div class="form-group">
+                <input name="rev" id="search1" type="text" placeholder="Author, revision, filename, or commit" class="form-control">
+            </div>
+        </form>
+    </div>
+    <hr style="margin-top:0px"/>'

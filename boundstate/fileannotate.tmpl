@@ -1,0 +1,74 @@
+{header}
+    <title>{repo|escape}: {file|escape} annotate</title>
+    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+{bar0}
+
+{bar1}
+<div id="content" class="container">
+
+    <h3>{repo|escape}/{file|escape}</h3>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        <strong>{repo|escape}/{file|escape}</strong>
+        </div>
+        <div class="panel-body">
+            <div class="revision-details">
+                <dl class="dl-horizontal">
+                  <dt>author</dt>
+                  <dd>{author|person}</dd>
+                  <dt>date</td>
+                  <dd>{date|shortdate}</dd>
+                  <dt>parent:</td>
+                  <dd>{parent%filerevparent}</dd>
+                  <dt>child</td>
+                  <dd>{child%filerevchild}</dd>
+                  <dt>rev:</dt>
+                  <dd><a href="{url}rev/{node|short}{sessionvars%urlparameter}" class="revision">{rev}:{node|short}</a></dd>
+                  <dt>lasted:</dt>
+                  <dd><a class="latest" href="{url}file/tip/{file|urlescape}{sessionvars%urlparameter}">Go to Latest</a></dd>
+                  <dt>comment:</dt>
+                  <dd>{desc|strip|escape|nonempty} {changesettag}</dd>
+                </dl>
+            </div>
+
+                <div class="well">
+                <div class="pull-right">
+                    <a href="{url}raw-file/{node|short}/{file|urlescape}">Download raw file</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-default" href="{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}">View source</a>
+                    <a class="btn btn-default" href="{url}diff/{node|short}/{file|urlescape}{sessionvars%urlparameter}">Diff to previous</a>
+                    <a class="btn btn-default active" href="{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}">Annotate</a>
+                </div>
+
+                <div class="btn-group">
+                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                        History
+                        <span class="caret"></span>
+                    </a>
+                    <ul id="history-menu" class="dropdown-menu">
+                        <li><span class="loading">Loading...</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="overflow">
+                <table>
+                    <tbody>
+                        {annotate%annotateline}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#history-menu").load("{url}log/{node|short}/{file|urlescape}{sessionvars%urlparameter}");
+</script>
+
+{footer}

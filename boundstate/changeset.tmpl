@@ -1,0 +1,72 @@
+{header}
+    <title>{repo|escape}: {node|short}</title>
+    <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+{bar0}
+
+{bar1}
+
+<div id="content" class="container">
+
+    <ul class="nav nav-tabs">
+        <li ><a href="{url}">Summary</a></li>
+        <li ><a href="{url}file">files</a></li>
+        <li class="active"><a href="{url}shortlog">commits</a></li>
+    </ul>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            changeset:author:{author|person};date:{date|shortdate};
+            parent:{parent%changesetparent}
+            child:{child%changesetchild}
+        </div>
+        <div class="panel-body">
+            <p>
+                <span class="revision">{rev}:{node|short}</span>
+                {changesetbranch%changelogbranchname}
+                {changesettag}
+                {changesetbookmark}
+                <a class="files" href="{url}file/{node|short}{path|urlescape}{sessionvars%urlparameter}">Browse Files</a>
+            </p>
+            <p class="description">{desc|strip|escape|nonempty}</p>
+            <p class="files">{files}</p>
+        </div>
+    </div>
+    <div class="well">
+        <div id="tabs" class="btn-group">
+            <a class="btn active" href="#diff">Diff to previous</a>
+            <a class="btn" href="#diffstat">Statistics</a>
+        </div>
+    </div>
+
+    <div id="tab-content">
+        <div id="diff" class="overflow">
+            {diff}
+        </div>
+        <div id="diffstat" class="diffstat" style="display:none;">
+            <p>{diffsummary}</p>
+            <table class="table">
+                <thead><tr><th>File</th><th>Total</th><th>Ratio</th></tr></thead>
+                <tbody>{diffstat}</tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#tabs a").on("click", function()\{
+        $("#tabs a").removeClass("active");
+        $(this).addClass("active");
+        $("#tab-content > div").hide();
+        $("#tab-content").find($(this).attr("href")).show();
+        return false;
+    });
+
+    $("#diffstat a").on("click", function()\{
+        $("#tabs a:first").click();
+    });
+</script>
+
+{footer}

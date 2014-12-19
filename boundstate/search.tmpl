@@ -1,0 +1,36 @@
+{header}
+<title>{repo|escape}: searching for {query|escape}</title>
+</head>
+<body>
+
+{bar0}
+
+{bar1}
+
+<div id="content" class="container">
+
+   <ul class="nav nav-tabs">
+        <li class="active"><a href="{url}">Summary</a></li>
+        <li><a href="{url}file">files</a></li>
+        <li><a href="{url}shortlog">commits</a></li>
+    </ul>
+
+    <h3>Search results for '{query|escape}'</h3>
+
+    <table class="table table-condensed table-striped">
+        <thead>
+            <tr>
+                <th class="age">Age</th>
+                <th class="author">Author</th>
+                <th class="description">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {entries}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{url}search/{morevars%urlparameter}#more" name="more">More Results</a>
+
+</div>
+
+{footer}
