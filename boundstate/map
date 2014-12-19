@@ -149,8 +149,8 @@ branchentry = '
 changelogtag = '<span class="tag">{name|escape}</span> '
 changesettag = '<span class="tag">{tag|escape}</span> '
 changesetbookmark = '<span class="tag">{bookmark|escape}</span> '
-changelogbranchhead = '<a href="{url}shortlog/{name%urlparameter}" class="tag branchhead">{name|escape}</a> '
-changelogbranchname = '<a href="{url}shortlog/{name%urlparameter}" class="tag branchname">{name|escape}</a> '
+changelogbranchhead = '<a href="{url}shortlog/{name%urlparameter}" class="label label-success">{name|escape}</a> '
+changelogbranchname = '<a href="{url}shortlog/{name%urlparameter}" class="label label-success">{name|escape}</a> '
 
 filediffparent = '
   <tr>

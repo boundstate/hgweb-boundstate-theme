@@ -106,22 +106,22 @@
             if (cur[7].length || cur[8].length || (cur[6][0] != 'default' || cur[6][1])) \{
                 tagspan = ' <span class="logtags">';
                 if (cur[6][1]) \{
-                    tagspan += '<a class="tag branchhead" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
+                    tagspan += '<a class="label label-success" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
                     tagspan += cur[6][0] + '</a> ';
                 } else if (!cur[6][1] && cur[6][0] != 'default') \{
-                    tagspan += '<a class="tag branchname" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
+                    tagspan += '<a class="label label-success" href="{url}graph/' + cur[6][0] + '" title="' + cur[6][0] + '">';
                     tagspan += cur[6][0] + '</a> ';
                 }
                 if (cur[7].length) \{
                     for (var t in cur[7]) \{
                         var tag = cur[7][t];
-                        tagspan += '<span class="tag">' + tag + '</span> ';
+                        tagspan += '<span class="label label-warning">' + tag + '</span> ';
                     }
                 }
                 if (cur[8].length) \{
                     for (var b in cur[8]) \{
                         var bookmark = cur[8][b];
-                        tagspan += '<span class="tag">' + bookmark + '</span> ';
+                        tagspan += '<span class="label label-warning">' + bookmark + '</span> ';
                     }
                 }
                 tagspan += '</span>';
