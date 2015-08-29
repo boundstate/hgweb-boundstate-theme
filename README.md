@@ -1,23 +1,24 @@
 # BoundState Theme for HgWeb
 
-  A clean, modern theme for Mercurial's [hgweb](http://mercurial.selenic.com/wiki/PublishingRepositories#hgweb-1]) using the [Bootstrap](http://twitter.github.com/bootstrap/) CSS framework.
+A clean, modern theme for Mercurial's [hgweb] using the [Bootstrap] CSS framework.
 
 ## Installation
 
-  Download the files to a new folder `boundstate` in your Mercurial templates folder.
+```sh
+git clone https://github.com/boundstate/hgweb-boundstate-theme.git
+```
 
-  (Hint: use `hg debuginstall` to determine the templates path.)
+Edit your `hgweb.config` file to use the `boundstate` theme:
 
-  Create a link to the static files:
-
-    # cd /usr/share/mercurial/templates/static
-    # ln -s ../boundstate/static/boundstate boundstate
-
-  Edit your `hgweb.config` file to use the `boundstate` theme:
-
-    [web]
-    style = boundstate
+```
+[web]
+templates = /path/to/hgweb-boundstate-theme
+style = boundstate
+```
 
 ## Screenshots
 
-![commits](https://dl.dropbox.com/u/4186242/hgweb-boundstate-theme.png)
+![commits](https://github.com/boundstate/hgweb-boundstate-theme/raw/master/screenshot.png)
+
+[hgweb]: http://mercurial.selenic.com/wiki/PublishingRepositories#hgweb-1
+[Bootstrap]: http://getbootstrap.com
