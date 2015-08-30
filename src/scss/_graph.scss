@@ -1,0 +1,43 @@
+div#wrapper {
+  position: relative;
+  margin: $line-height-computed 0;
+  padding: 0;
+}
+
+canvas {
+  margin: 0;
+  position: absolute;
+  top: -13px;
+  z-index: 5;
+}
+
+ul#graphnodes {
+  list-style: none inside none;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+ul#nodebgs {
+  list-style: none inside none;
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+
+ul#graphnodes li, ul#nodebgs li {
+  height: 39px;
+}
+
+ul#graphnodes li {
+  overflow: hidden;
+
+  .info {
+    display: block;
+    font-size: 11px;
+    position: relative;
+    top: 0;
+    color: $gray;
+  }
+}

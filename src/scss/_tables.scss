@@ -1,0 +1,25 @@
+.table-help {
+}
+
+.table-commits {
+  margin-top: $padding-base-vertical;
+  
+  .age, .author {
+    white-space: nowrap;
+  }
+  .description .base {
+    float: right;
+  }
+}
+
+.table-files {
+  .size {
+    text-align: right;
+  }
+  .permissions {
+    white-space: nowrap;
+  }
+  .filename {
+    width: 100%;
+  }
+}

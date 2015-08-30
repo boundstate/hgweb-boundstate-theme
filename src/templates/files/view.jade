@@ -1,0 +1,4 @@
+extends ../layouts/file.jade
+
+block file-content
+  pre.source {text % '<div><a id="{lineid}" href="\#{lineid}"> {linenumber}</a><span class="line">{line|escape}</span>'}

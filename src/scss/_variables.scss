@@ -1,0 +1,11 @@
+$brand-primary: #00B5F1;
+
+$link-color: darken($brand-primary, 10%);
+
+$icon-font-path: "";
+
+$navbar-default-bg: darken($brand-primary, 5%);
+$navbar-default-color: #fff;
+$navbar-default-link-color: transparentize(#fff, 0.2);
+$navbar-default-link-hover-color: #fff;
+$navbar-default-link-active-color: #fff;

@@ -1,0 +1,13 @@
+extends ../layouts/commits.jade
+
+block commits-content
+
+  table.table.table-commits
+    thead
+      tr
+        th.age Age
+        th.author Author
+        th.description Description
+    tbody {entries%shortlogentry}
+
+  a.btn.btn-default(name='more', href='{url}shortlog/{rev}{morevars%urlparameter}#more') More Commits

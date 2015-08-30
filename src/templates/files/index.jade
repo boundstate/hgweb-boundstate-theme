@@ -1,0 +1,34 @@
+extends ../layouts/repository.jade
+
+append head
+  title {repo|escape}: {node|short} {path|escape}
+
+block repository-navigation
+  - var selectedItem = 'files';
+
+block repository-content
+  .revision-details
+    span.date {date|shortdate}
+
+  p
+    a.revision(href='{url}rev/{node|short}{sessionvars%urlparameter}') {rev}:{node|short}
+    |  {tags % '<span class="tag">{name|escape}</span> '}
+    span.downloads {archives%archiveentry}
+
+  h3 {repo|escape}{path|escape}
+
+  table.table.table-files
+    thead
+      tr
+        th.filename Name
+        th.size Size
+        th.permissions Permissions
+      tr(class='parity{upparity}')
+        td.filename
+          a(href='{url}file/{node|short}{up|urlescape}{sessionvars%urlparameter}') <b>..</b>
+        td.size
+        td.permissions
+          tt drwxr-xr-x
+    tbody
+      | {dentries%direntry}
+      | {fentries%fileentry}

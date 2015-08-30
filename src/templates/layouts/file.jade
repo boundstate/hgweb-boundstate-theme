@@ -1,0 +1,42 @@
+extends ./repository.jade
+
+append head
+  title {repo|escape}: {node|short} {file|escape}
+
+block repository-navigation
+  - var selectedItem = 'files';
+
+block repository-content
+
+  block file-navigation
+    - var selectedItem = 'source';
+  
+  .revision-details
+    span.author {author|person}
+    span.date {date|shortdate}
+  p
+    a.revision(href='{url}rev/{node|short}{sessionvars%urlparameter}') {rev}:{node|short}
+    a.latest(href='{url}file/tip/{file|urlescape}{sessionvars%urlparameter}') Go to Latest
+  h3 {repo|escape}/{file|escape}
+  p.description 
+    | {desc|strip|escape|nonempty} 
+    span.tag {tag|escape}
+  .well
+    .pull-right
+      a(href='{url}raw-file/{node|short}/{file|urlescape}') Download raw file
+    .btn-group
+      a.btn.btn-default(href='{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}', class=selectedItem=='source'&&'active') View source
+      a.btn.btn-default(href='{url}diff/{node|short}/{file|urlescape}{sessionvars%urlparameter}', class=selectedItem=='diff'&&'active') Diff to previous
+      a.btn.btn-default(href='{url}annotate/{node|short}/{file|urlescape}{sessionvars%urlparameter}', class=selectedItem=='annotate'&&'active') Annotate
+    | 
+    .btn-group
+      a.btn.btn-default.dropdown-toggle(data-toggle='dropdown', href='#')
+        | History 
+        span.caret
+      ul#history-menu.dropdown-menu
+        li
+          span.loading Loading...
+
+  block file-content
+
+  script $("#history-menu").load("{url}log/{node|short}/{file|urlescape}{sessionvars%urlparameter}");

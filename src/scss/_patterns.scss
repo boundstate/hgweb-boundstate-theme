@@ -1,0 +1,110 @@
+// Revision details
+
+.revision-details {
+  float: right;
+
+  span, a {
+    margin-left: 6px;
+  }
+
+  .author {
+    font-weight: bold;
+  }
+}
+
+// Source Code
+
+.source {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+  font-size: $font-size-small;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+
+  .line-at {
+    font-weight: bold;
+  }
+
+  .line-plus {
+    color: #468847;
+  }
+
+  .line-minus {
+    color: #B94A48;
+  }
+
+  a {
+    padding: 4px 9px 4px 9px;
+    margin-right: 4px;
+    border-right: 1px solid $hr-border;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  .annotate a {
+    border-right: none;
+  }
+}
+
+
+// Filename lists
+
+.filename {
+  white-space:nowrap;
+  margin-right: $padding-small-horizontal;
+}
+
+span.filename {
+  @extend .text-muted;
+}
+
+// Downloads
+
+.downloads {
+  a {
+    text-transform: uppercase;
+    margin-right: $padding-base-horizontal;
+  }
+}
+
+span.downloads, a.files, a.latest {
+  margin-left: $padding-base-horizontal;
+}
+
+// Diff statistics
+
+.diffstat {
+  margin-bottom: $padding-base-vertical;
+}
+
+.diffstat-file {
+  white-space: nowrap;
+}
+
+.diffstat-graph {
+  width: 100%;
+}
+
+.table .diffstat-total {
+  text-align: right;
+}
+
+.diffstat-add {
+  background-color: #468847;
+  float: left;
+}
+
+.diffstat-remove {
+  background-color: #B94A48;
+  float: left;
+}
+
+// Documentaiton
+pre.doc {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}

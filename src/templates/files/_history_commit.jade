@@ -1,0 +1,11 @@
+li
+  a(href='{url}rev/{node|short}{sessionvars%urlparameter}')
+    span.revision-details
+      span.revision {node|short}
+      | 
+      | {inbranch % '<span class="tag branchname">{name|escape}</span> '}
+      | {branches % '<span class="tag branchhead">{name|escape}</span> '}
+      | {tags % '<span class="tag">{name|escape}</span> '}
+      span.date {date|shortdate}
+    span.author {author|person}
+    span.description {desc|strip|firstline|escape|nonempty}

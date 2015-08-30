@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+  head
+    meta(name='robots',content='index, nofollow')
+    link(rel='icon',type='image/png',href='{staticurl}favicon.png')
+    link(rel='stylesheet',type='text/css',href='{staticurl}app.css')
+    script(src='{staticurl}jquery.min.js')
+    script(src='{staticurl}bootstrap.min.js')
+    script(src='{staticurl}mercurial.js')
+    block head
+      title Mercurial
+  body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          a.navbar-brand(href='{logourl}')
+            img(src='{staticurl}brand.png')
+        ul.nav.navbar-nav
+          li
+            a(href='/') Repositories
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='{url}help{sessionvars%urlparameter}') Help
+
+    block content
+
+    script process_dates();
+
+    | {motd}

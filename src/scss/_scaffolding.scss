@@ -1,0 +1,18 @@
+body {
+  padding-bottom: 80px;
+}
+
+.page-header {
+  margin: -20px 0 20px;
+  padding: 20px 0 0;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid $nav-tabs-border-color;
+  
+  h1 {
+    margin-top: 0;
+  }
+
+  .nav-tabs {
+    margin-bottom: -1px;
+  }
+}

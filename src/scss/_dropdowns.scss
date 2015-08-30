@@ -1,0 +1,46 @@
+.dropdown-menu {
+  .loading {
+    padding: 3px 15px;
+    color: $gray;
+  }
+
+  a.closed {
+    font-style: italic;
+  }
+}
+
+// History dropdown menu
+
+#history-menu {
+  width: 400px;
+  a {
+    white-space: normal;
+    padding: 9px 15px;
+  }
+
+  .author {
+    font-weight: bold;
+    display: block;
+  }
+
+  .description {
+    padding-top: 2px;
+    display: block;
+    white-space: normal;
+  }
+
+  .revision-details {
+    span {
+      margin: 0;
+    }
+  }
+}
+
+// Branch dropdown menu
+
+#branch-menu {
+  .node {
+    float: right;
+  }
+}
+

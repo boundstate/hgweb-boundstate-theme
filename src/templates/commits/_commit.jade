@@ -1,0 +1,10 @@
+tr(class='parity{parity}')
+td.age {date|rfc822date}
+  td.author {author|person}
+  td.description
+    a(href='{url}rev/{node|short}{sessionvars%urlparameter}') {desc|strip|firstline|escape|nonempty} 
+    | {inbranch % '<a href="{url}shortlog/{name|escape}" class="tag branchname">{name|escape}</a> '} 
+    | {branches % '<a href="{url}shortlog/{name|escape}" class="tag branchhead">{name|escape}</a> '} 
+    | {tags % '<span class="tag">{name|escape}</span> '} 
+    | {bookmarks % '<span class="tag">{name|escape}</span> '}
+ 

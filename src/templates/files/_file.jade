@@ -1,0 +1,8 @@
+tr(class='parity{parity}')
+  td.filename
+    a(href='{url}file/{node|short}/{file|urlescape}{sessionvars%urlparameter}')
+      i.glyphicon.glyphicon-file
+      |  {basename|escape}
+  td.size {size}
+  td.permissions
+    tt {permissions|permissions}

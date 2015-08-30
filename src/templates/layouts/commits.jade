@@ -1,0 +1,55 @@
+extends ./repository.jade
+
+append head
+  title {repo|escape}: commits
+
+block repository-content
+
+  block commits-navigation
+    - var commitsMode = 'list';
+
+  .btn-group.pull-right
+    a.btn.btn-default(href='{url}shortlog/{node|short}{sessionvars%urlparameter}', class=commitsMode=='list'&&'active')
+      | List
+    a.btn.btn-default(href='{url}graph/{node|short}{sessionvars%urlparameter}', class=commitsMode=='graph'&&'active')
+      | Graph
+
+  .btn-toolbar
+    .btn-group
+      a.btn.btn-default.dropdown-toggle(data-toggle='dropdown', href='#')
+        i.glyphicon.glyphicon-tag
+        |  Tags 
+        span.caret
+      ul#tag-menu.dropdown-menu
+        li
+          span.loading Loading...
+    .btn-group
+      a.btn.btn-default.dropdown-toggle.disabled(data-toggle='dropdown', href='#')
+        i.glyphicon.glyphicon-bookmark
+        |  Bookmarks 
+        span.caret
+      ul#bookmark-menu.dropdown-menu
+        li
+          span.loading Loading...
+    .btn-group
+      a.btn.btn-default.dropdown-toggle(data-toggle='dropdown', href='#')
+        i.glyphicon.glyphicon-leaf
+        |  Branches 
+        span.caret
+      ul#branch-menu.dropdown-menu
+        li
+          span.loading Loading...
+
+  block commits-content
+
+  script(type='text/javascript').
+    $("#tag-menu").load("{url}tags{sessionvars%urlparameter}");
+    $("#bookmark-menu").load("{url}bookmarks{sessionvars%urlparameter}", function () \{
+      if ($("li", this).length > 0)
+        $(this).closest(".btn-group").find(".btn").removeClass("disabled");
+    });
+    $("#branch-menu").load("{url}branches{sessionvars%urlparameter}", function () \{
+      $("a", this).each(function () \{
+        $(this).attr("href", "{url}shortlog/" + $(this).attr("href"));
+      });
+    });

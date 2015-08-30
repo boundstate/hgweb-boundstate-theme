@@ -1,0 +1,11 @@
+extends ../layouts/base.jade
+
+block head
+  title Help: {topic}
+
+block content
+  .page-header
+    .container
+      h1 Help
+  .container
+    pre.doc {doc|escape}

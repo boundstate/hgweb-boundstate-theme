@@ -1,0 +1,60 @@
+mimetype = 'text/html; charset={encoding}'
+default = 'shortlog'
+notfound = error404.tmpl
+error = error.tmpl
+urlparameter = '{separator}{name}={value|urlescape}'
+
+index = index.tmpl
+indexentry = _repository.tmpl
+archiveentry = _download.tmpl
+
+search = search.tmpl
+searchentry = commits/_commit.tmpl
+
+helptopics = help/index.tmpl
+helpentry = help/_topic.tmpl
+help = help/topic.tmpl
+
+shortlog = commits/index.tmpl
+shortlogentry = commits/_commit.tmpl
+
+changelog = commits/index.tmpl
+changelogentry = commits/_commit.tmpl
+
+tags = '{entries%tagentry}'
+tagentry = _tag.tmpl
+
+bookmarks = '{entries%bookmarkentry}'
+bookmarkentry = _bookmark.tmpl
+
+branches = '{entries%branchentry}'
+branchentry = _branch.tmpl
+
+graph = commits/graph.tmpl
+
+changeset = commits/view.tmpl
+
+diffstatlink = commits/_stat.tmpl
+diffstatnolink = commits/_stat.tmpl
+
+manifest = files/index.tmpl
+direntry = files/_directory.tmpl
+fileentry = files/_file.tmpl
+filerevision = files/view.tmpl
+filediff = files/diff.tmpl
+filelog = files/_history.tmpl
+filelogentry = files/_history_commit.tmpl
+fileannotate = files/annotate.tmpl
+
+
+annotateline = files/_annotate_line.tmpl
+
+filenodelink = files/_filename_link.tmpl
+filenolink = files/_filename.tmpl
+
+diffblock = files/diff/_block.tmpl
+difflineplus = files/diff/_line_plus.tmpl
+difflineminus = files/diff/_line_minus.tmpl
+difflineat = files/diff/_line_at.tmpl
+diffline = files/diff/_line.tmpl
+

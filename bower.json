@@ -1,0 +1,8 @@
+{
+  "name": "hgweb-boundstate-theme",
+  "version": "0.0.1",
+  "devDependencies": {
+    "bootstrap": "~3.3.5",
+    "bootstrap-sass": "~3.3.5"
+  }
+}

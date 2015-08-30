@@ -1,0 +1,32 @@
+extends ../layouts/base.jade
+
+block head
+  title Help: {title}
+
+block content
+  
+  .page-header
+    .container
+      h1 Help
+
+  .container
+    .row
+      .col-sm-4
+        a(name='main')
+        h3 Topics
+        table.table.table-help
+          tbody
+            | {topics % helpentry}
+
+      .col-sm-4
+        a(name='main')
+        h3 Main Commands
+        table.table.table-help
+          tbody {earlycommands % helpentry}
+
+      .col-sm-4
+        a(name='other')
+        h3 Other Commands
+        table.table.table-help
+          tbody
+            | {othercommands % helpentry}

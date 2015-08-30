@@ -1,0 +1,10 @@
+tr(class='parity{parity}')
+  td.name
+    a(href='{url}file/{node|short}{path|urlescape}{sessionvars%urlparameter}')
+      i.glyphicon.glyphicon-folder-close
+      |  {basename|escape}/
+    a(href='{url}file/{node|short}{path|urlescape}/{emptydirs|urlescape}{sessionvars%urlparameter}')
+      | {emptydirs|escape}
+  td.size
+  td.permissions
+    tt drwxr-xr-x

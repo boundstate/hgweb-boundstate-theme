@@ -1,0 +1,54 @@
+.tag, .revision {
+  font-size: $font-size-small;
+  font-weight: bold;
+  color: #fff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  background-color: #bbb;
+  padding: 2px 4px 2px;
+  border-radius: 3px;
+  
+  &:empty {
+    display: none;
+  }
+}
+
+.tag {
+  background-color: #888;
+
+  &.branchhead, &.branchname {
+    background-color: #BBB;
+  }
+}
+
+a.tag:hover {
+  background-color: darken(#888, 10%);
+
+  &.branchhead, &.branchname {
+    background-color: darken(#BBB, 10%);
+  }
+}
+
+.revision {
+  background-color: $brand-primary;
+
+  &.parent:before {
+    content: 'Parent: ';
+  }
+
+  &.child:before {
+    content: 'Child: ';
+  }
+}
+
+a.revision:hover {
+  background-color: darken($brand-primary, 10%);
+}
+
+// Hover state, but only for links
+a.tag:hover,
+a.revision:hover {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}

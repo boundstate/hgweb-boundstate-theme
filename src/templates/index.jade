@@ -1,0 +1,19 @@
+extends ./layouts/base.jade
+
+append head
+  title Repositories - Mercurial
+
+block content
+  .container
+    table.table
+      thead
+        tr
+          th
+            a(href='?sort={sort_name}') Name
+          th
+            a(href='?sort={sort_description}') Description
+          th
+            a(href='?sort={sort_contact}') Contact
+          th
+            a(href='?sort={sort_lastchange}') Last Modified
+      tbody {entries%indexentry}

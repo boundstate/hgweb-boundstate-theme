@@ -1,0 +1,9 @@
+extends ../layouts/file.jade
+
+block file-navigation
+  - var selectedItem = 'annotate';
+
+block file-content
+  pre.source
+    table
+      tbody {annotate%annotateline}

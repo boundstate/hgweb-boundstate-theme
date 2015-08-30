@@ -1,0 +1,31 @@
+extends ./base.jade
+
+block head
+  link(rel='alternate', type='application/atom+xml', href='{url}atom-log', title='Atom feed for {repo|escape}')
+  link(rel='alternate', type='application/rss+xml', href='{url}rss-log', title='RSS feed for {repo|escape}')
+
+block content
+
+  block repository-navigation
+    - var selectedItem = 'commits';
+
+  .page-header
+    .container
+
+      h1 {repo|escape}
+
+      form.form-search(action='{url}log')
+        | {sessionvars % '<input type="hidden" name="{name}" value="{value|escape}" />'}
+        .input-group
+          input.form-control(name='rev', type='text', placeholder='Author, revision, filename, or commit')
+          a.btn.btn-default.input-group-addon(onclick='$(".form-search").submit()')
+            span.glyphicon.glyphicon-search
+      
+      ul.nav.nav-tabs
+        li(class=selectedItem=='commits' && 'active')
+          a(href='{url}') Commits
+        li(class=selectedItem=='files' && 'active')
+          a(href='{url}file') Files
+
+  .container
+    block repository-content

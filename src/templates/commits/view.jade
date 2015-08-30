@@ -1,0 +1,53 @@
+extends ../layouts/repository.jade
+
+append head
+  title {repo|escape}: log
+
+block repository-content
+
+  .revision-details
+    span.author {author|person}
+    span.date {date|shortdate}
+    | {parent % '<span>Parent:<a class="revision" href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a></span> '}
+    | {child % '<span>Child:<a class="revision" href="{url}rev/{node|short}{sessionvars%urlparameter}">{node|short}</a></span> '}
+
+  p
+    span.revision {rev}:{node|short}
+    | 
+    | {changesetbranch % '<a href="{url}shortlog/{name|escape}" class="tag branchname">{name|escape}</a> '}
+    span.tag {tag|escape}
+    span.tag {bookmark|escape}
+    a.files(href='{url}file/{node|short}{path|urlescape}{sessionvars%urlparameter}') Browse Files
+
+  p.description {desc|strip|escape|nonempty}
+
+  p.files {files}
+
+  .well.well-sm
+    #tabs.btn-group
+      a.btn.btn-default.active(href='#diff') Diff to previous
+      a.btn.btn-default(href='#diffstat') Statistics
+
+  #tab-content
+    #diff {diff}
+    #diffstat.diffstat(style='display:none;')
+      p {diffsummary}
+      table.table
+        thead
+          tr
+            th File
+            th Total
+            th Ratio
+        tbody {diffstat}
+
+  script(type='text/javascript').
+    $("#tabs a").on("click", function()\{
+      $("#tabs a").removeClass("active");
+      $(this).addClass("active");
+      $("#tab-content > div").hide();
+      $("#tab-content").find($(this).attr("href")).show();
+      return false;
+    });
+    $("#diffstat a").on("click", function()\{
+      $("#tabs a:first").click();
+    });

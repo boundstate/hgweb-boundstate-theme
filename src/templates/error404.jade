@@ -1,0 +1,9 @@
+extends ./layouts/base.jade
+
+append head
+	title {repo|escape}: error
+
+block content
+	.container
+		h2 Repository Not Found
+		p The repository '{repo|escape}' does not exist.

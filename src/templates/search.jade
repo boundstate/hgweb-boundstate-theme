@@ -1,0 +1,18 @@
+extends ./layouts/repository.jade
+
+block head
+  title {repo|escape}: search results for {query|escape}
+
+block repository-content
+
+  h3 Search results for '{query|escape}'
+
+  table.table.table-commits
+    thead
+      tr
+        th.age Age
+        th.author Author
+        th.description Description
+    tbody {entries}
+
+  a.btn.btn-default(href='{url}log{morevars%urlparameter}#more', name='more') More Results

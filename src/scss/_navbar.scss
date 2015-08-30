@@ -1,0 +1,8 @@
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  img {
+    padding-top: ($navbar-height - 31px)/2;
+  }
+}
